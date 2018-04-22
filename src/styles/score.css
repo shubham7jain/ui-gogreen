@@ -8,11 +8,20 @@
 .greenscore {
   border: 4px solid #20c169;
   flex-basis: 20%;
-  max-height: 200px;
+}
+
+.greenscore .color-bar {
+  height: 5px;
+  background-color: #20c169;
+  margin: 1em;
 }
 
 .greenscore .number {
   font-size: 50px;
+}
+
+.greenscore .previous-score-info {
+
 }
 
 .greenscore .number .percent{
@@ -26,6 +35,26 @@
 .factors {
   border: 4px solid black;
   flex-basis: 20%;
+}
+
+.factors > .pt-list-unstyled {
+  text-align: left;
+}
+
+.factors > .pt-list-unstyled ul {
+  list-style: none;
+}
+
+.factors > .positive.pt-list-unstyled li:before {
+  content: "+";
+  margin-left: 1em;
+  margin-right: 4px;
+}
+
+.factors > .negative.pt-list-unstyled li:before {
+  content: "-";
+  margin-left: 1em;
+  margin-right: 4px;
 }
 
 .score-graph {

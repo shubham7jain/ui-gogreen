@@ -3,6 +3,10 @@
 
 .App {
   text-align: center;
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;
+
 }
 
 .App-logo {
@@ -11,10 +15,14 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  flex: 0.15;
+  min-height: 100px;
   padding: 20px;
-  color: white;
+}
+
+.App-header .title {
+  font: bold italic large serif;
+  color: #20c169;
 }
 
 .App-title {
