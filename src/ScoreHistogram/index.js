@@ -15,11 +15,13 @@ class ScoreHistogram extends Component {
     const formattedData = this.props.data.map(([key, val]) => {
       return {x: key, y: val}
     })
+    const score = Math.round(this.props.gScore)
 
     return (
       <div className="score-graph">
         <XYPlot
           xType="ordinal"
+          yDomain={[0, 100]}
           stackBy="y"
           width={300}
           height={300} >
@@ -49,7 +51,7 @@ class ScoreHistogram extends Component {
               strokeDasharray: "10,10"
             }}
             tickTotal={1}
-            tickValues={[70]}
+            tickValues={[score]}
           />
         </XYPlot>
       </div>

@@ -1,0 +1,11 @@
+.alternate-transport > .bike-transport-routes {
+  margin: 1em;
+}
+
+.alternate-transport > .public-transport-routes {
+  margin: 1em;
+}
+
+.alternate-transport .route {
+  margin: 2em;
+}

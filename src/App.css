@@ -1,5 +1,6 @@
 @import "../node_modules/react-vis/dist/style.css";
 @import "styles/score.css";
+@import "styles/alternate.css";
 
 .App {
   text-align: center;

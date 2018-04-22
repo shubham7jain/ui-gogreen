@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+const getComment = (score) => {
+  if (score < 50) {
+    return "Keep going";
+  } else if (score < 75) {
+    return "Good";
+  } else if (score <= 100) {
+    return "Proud of you!";
+  }
+  return "-";
+}
+
 class GreenScore extends Component {
   render() {
     return (
@@ -9,17 +20,17 @@ class GreenScore extends Component {
           Your GreenScore is based on StateFarms Green Rating system.
         </p>
         <div className="number">
-          {this.props.score}
+          {Math.round(this.props.score) || "-"}
           <span className="percent">%</span>
         </div>
         <div className="comment-text">
-          Good!
+          {getComment(this.props.score)}
         </div>
         <div className="color-bar">
         </div>
         <div className="previous-score-info">
           <div className="previous-score-value">
-            72
+            {Math.round(this.props.previousScore)}
           </div>
           <div className="previous-score-text">
             Previous Score

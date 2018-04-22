@@ -2,31 +2,38 @@ import React, { Component } from 'react';
 import GreenScore from '../GreenScore';
 import ScoreHistogram from '../ScoreHistogram';
 import ScoreFactors from '../ScoreFactors';
-import {getGreenScore, getAvgScore} from '../requests';
+import {getGreenScore, getFactors, getAvgScore} from '../requests';
 
 class Score extends Component {
   state = {
     gScore: 0,
     prevGScore: 0,
-    avgScores: []
+    avgScores: [],
+    factors: {
+      numBikes: 0,
+      onCall: 0,
+      publicTransport: 0,
+      revCount: 0
+    }
   }
 
   componentDidMount() {
+    const userId = this.props.match.params.id
     Promise.all([
-      getGreenScore(),
-      getAvgScore()
-    ]).then(([scores, avgScores]) => {
+      getGreenScore(userId),
+      getFactors(userId),
+      getAvgScore(userId)
+    ]).then(([scores, factors, avgScores]) => {
       this.setState({
         gScore: scores.score,
         prevGScore: scores.previousScore,
-        avgScores: avgScores
+        avgScores: avgScores,
+        factors: factors
       })
     })
   }
 
   render() {
-    const positiveFactors = []
-    const negativeFactors = []
 
     return (
       <div className="score">
@@ -35,11 +42,11 @@ class Score extends Component {
           previousScore={this.state.prevGScore}
         />
         <ScoreFactors
-          positiveFactors={positiveFactors}
-          negativeFactors={negativeFactors}
+          factors={this.state.factors}
         />
         <ScoreHistogram
           data={this.state.avgScores}
+          gScore={this.state.gScore}
         />
       </div>
     )
